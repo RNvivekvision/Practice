@@ -14,8 +14,6 @@ const RNHeader = ({
   children,
   style,
   footer,
-  drawer,
-  noScroll,
 }) => {
   const navigation = useNavigation();
   const styles = useStyles();
@@ -24,28 +22,24 @@ const RNHeader = ({
     <View style={RNStyles.container}>
       <View style={[styles.Container, containerStyle]}>
         <RNIcon
-          icon={drawer ? Images.Drawer : Images.Back}
-          iconStyle={RNStyles.image60}
-          onPress={() =>
-            drawer ? navigation.openDrawer() : navigation.goBack()
-          }
+          icon={Images.Back}
+          iconStyle={RNStyles.image90}
+          onPress={() => navigation.goBack()}
           containerStyle={styles.icon}
         />
         <RNText style={[styles.title, titleStyle]}>{title}</RNText>
       </View>
-      {noScroll ? (
-        children
-      ) : (
-        <RNScrollView style={style} scrollProps={scrollProps}>
-          {children}
-        </RNScrollView>
-      )}
+
+      <RNScrollView style={style} scrollProps={scrollProps}>
+        {children}
+      </RNScrollView>
+
       {footer && <View style={styles.footer}>{footer}</View>}
     </View>
   );
 };
 
-const iconSize = wp(8);
+const iconSize = wp(7);
 const useStyles = () => {
   const inset = useInset();
 
@@ -55,7 +49,7 @@ const useStyles = () => {
     },
     Container: {
       ...RNStyles.flexRow,
-      backgroundColor: Colors.Black,
+      backgroundColor: Colors.White,
       paddingHorizontal: wp(4),
       paddingTop: inset.top + hp(2),
       paddingVertical: hp(2),
@@ -64,16 +58,13 @@ const useStyles = () => {
       ...RNStyles.center,
       width: iconSize,
       height: iconSize,
-      borderRadius: 100,
     },
     title: {
+      flex: 1,
       paddingHorizontal: hp(1),
       marginHorizontal: hp(1),
       fontSize: FontSize.font18,
-      fontFamily: FontFamily.Medium,
-      color: Colors.White,
-      width: '80%',
-      textAlign: 'center',
+      fontFamily: FontFamily.SemiBold,
     },
   });
 };

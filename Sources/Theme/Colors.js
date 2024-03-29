@@ -1,10 +1,9 @@
 const Colors = {
-  Transparent: 'transparent',
-  Black: '#00142F',
+  Black: '#262626',
   White: '#ffffff',
-  Button: '#FFB905',
-  Loader: '#FFB905',
-  Placeholder: '#ffffff40',
+  Transparent: 'transparent',
+  Primary: '#054579',
+  Placeholder: '#9A9A9A',
 };
 
 export default Colors;

@@ -38,7 +38,7 @@ const RNStyles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: Colors.Black,
+    backgroundColor: Colors.White,
   },
   center: {
     alignItems: 'center',
@@ -92,8 +92,8 @@ const RNStyles = StyleSheet.create({
     justifyContent: 'center',
   },
   icon: {
-    width: wp(5),
-    height: wp(5),
+    width: wp(6),
+    height: wp(6),
   },
   devider: {
     width: '100%',
