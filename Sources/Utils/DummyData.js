@@ -6,6 +6,10 @@ const DummyData = {
       title: 'Webview with automatic form fill up',
       navigate: NavRoutes.WebForm,
     },
+    {
+      title: 'Open AI',
+      navigate: NavRoutes.OpenAI,
+    },
   ],
 };
 

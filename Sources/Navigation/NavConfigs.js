@@ -1,6 +1,6 @@
 import { TransitionPresets } from '@react-navigation/stack';
 const screenOptions = {
-  headerShown: false,
+  headerShown: true,
   ...TransitionPresets.SlideFromRightIOS,
 };
 const NavConfigs = {

@@ -23,6 +23,8 @@ const RNInput = React.forwardRef((props, ref) => {
     multiline,
     numberOfLines,
     spellCheck,
+    autoCapitalize,
+    ...rest
   } = props;
   return (
     <TextInput
@@ -46,10 +48,11 @@ const RNInput = React.forwardRef((props, ref) => {
       textAlignVertical={'center'}
       autoCorrect={false}
       spellCheck={spellCheck ?? true}
-      autoCapitalize={'none'}
+      autoCapitalize={autoCapitalize ?? 'none'}
       maxLength={maxLength}
       multiline={multiline}
       numberOfLines={numberOfLines}
+      {...rest}
     />
   );
 });

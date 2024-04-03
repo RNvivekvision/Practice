@@ -16,13 +16,44 @@ const WebForm = ({}) => {
 
   const onWebPress = async () => {
     try {
-      webViewRef.current?.injectJavaScript(jsCode);
+      webViewRef.current?.injectJavaScript(forms.w3schools);
     } catch (e) {
       console.error('Error onWebPress -> ', e);
     }
   };
 
-  const w3schools = `
+  return (
+    <View style={RNStyles.container}>
+      <WebView
+        originWhitelist={['*']}
+        ref={webViewRef}
+        source={{
+          uri: links[0],
+        }}
+        javaScriptEnabled={true}
+        onMessage={event => {
+          console.log('onMessage -> ', event);
+        }}
+        onBridgeMessage={(event, data) => {
+          console.log('onBridgeMessage -> ', event, data);
+        }}
+        onError={error => {
+          console.log('onError -> ', error);
+        }}
+      />
+    </View>
+  );
+};
+
+const links = [
+  'https://profile.w3schools.com/sign-up',
+  'https://www.instagram.com/accounts/login/',
+  'https://www.instagram.com/accounts/emailsignup/',
+  'https://cam.britannica.com/registration',
+];
+
+const forms = {
+  w3schools: `
     (function() {
       const names = {
         username: 'react_native_dev',
@@ -44,64 +75,56 @@ const WebForm = ({}) => {
       }, inputFields.length * 1000);
       true;
     })()
-  `;
-
-  const jsCode = `
-    (function() {
-      const names = {
-        firstName: 'react-native',
-        lastName: 'dev',
-        username: 'reactnativedev',
-        email: 'abcd@gmail.com',
-        password: 'react@123456',
-        text: 'This is text feild',
-      };
-      const inputFields = document.querySelectorAll('input');
-      inputFields.forEach((input, index) => {
+  `,
+  instagram: {
+    login: `
+      (function() {
+        const names = {
+          username: 'react_native_dev',
+          password: 'react@123456',
+        };
+        const inputFields = document.querySelectorAll('input');
+        inputFields.forEach((input, index) => {
+            setTimeout(() => {
+              if (names[input.name]) {
+                input.value = names[input.name];
+              }
+            }, index * 1000);
+        });
+        setTimeout(() => {
+          const button = document.getElementsByClassName('_acan')[1];
+          button.removeAttribute("disabled");
+          setTimeout(() => {
+            button.click()
+          }, 1000);
+        }, inputFields.length * 1000);
+        true;
+      })()
+    `,
+    register: `
+      (function() {
+        const names = {
+          phone: '9925599255',
+        };
+        const inputFields = document.querySelectorAll('input');
+        inputFields.forEach((input, index) => {
           setTimeout(() => {
             if (names[input.name]) {
-              input.focus();
-              // input.value = names[input.name];
-              setTimeout(() => {
-                input.value = "Hello World";
-              }, 500);
+              input.value = names[input.name];
             }
-            }, index * 2000);
-      });
-      setTimeout(() => {
-        // const button = document.getElementsByClassName('_acan')[0];
-        // button.click()
-      }, inputFields.length * 2000);
-      true;
-    })()
-  `;
-
-  return (
-    <View style={RNStyles.container}>
-      <WebView
-        originWhitelist={['*']}
-        ref={webViewRef}
-        source={{
-          uri:
-            // 'https://profile.w3schools.com/sign-up' ||
-            'https://www.instagram.com/accounts/login/' ||
-            'https://cam.britannica.com/registration' ||
-            'https://unsplash.com/join' ||
-            'https://unsplash.com/login',
-        }}
-        javaScriptEnabled={true}
-        onMessage={event => {
-          console.log('onMessage -> ', { event });
-        }}
-        onBridgeMessage={(event, data) => {
-          console.log('onBridgeMessage -> ', { event, data });
-        }}
-        onError={event => {
-          console.log('onError -> ', { event });
-        }}
-      />
-    </View>
-  );
+          }, index * 1000);
+        });
+        setTimeout(() => {
+          const button = document.getElementsByClassName('_acan')[1];
+          button.removeAttribute("disabled");
+          setTimeout(() => {
+            button.click()
+          }, 1000);
+        }, inputFields.length * 1000);
+        true;
+      })()
+    `,
+  },
 };
 
 export default WebForm;
