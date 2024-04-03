@@ -1,3 +1,3 @@
 import Home from './Home';
 export { Home };
-export { WebForm, OpenAi } from './Tasks';
+export { WebForm, OpenAi, ImageEditing } from './Tasks';

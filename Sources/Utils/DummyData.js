@@ -10,6 +10,10 @@ const DummyData = {
       title: 'Open AI',
       navigate: NavRoutes.OpenAI,
     },
+    {
+      title: 'Image Editing',
+      navigate: NavRoutes.ImageEditing,
+    },
   ],
 };
 
