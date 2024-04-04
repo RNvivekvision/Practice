@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+// Photo Editing using @baronha/react-native-photo-editor
+
+import React, { useEffect, useState } from 'react';
 import { Image, StyleSheet, View } from 'react-native';
-import { RNButton, RNLoader, RNStyles } from '../../Common';
-import { hp, wp } from '../../Theme';
 import ImageCropPicker from 'react-native-image-crop-picker';
 import PhotoEditor from '@baronha/react-native-photo-editor';
+import { RNButton, RNLoader, RNStyles } from '../../Common';
+import { wp } from '../../Theme';
 
 const ImageEditing = () => {
   const [State, setState] = useState({
@@ -35,7 +37,6 @@ const ImageEditing = () => {
     const path = State.image.path.includes('file://')
       ? State.image.path
       : `file://${State.image.path}`;
-    console.log({ path });
 
     try {
       const updatedImage = await PhotoEditor.open({
@@ -56,20 +57,23 @@ const ImageEditing = () => {
       {State.image ? (
         <>
           <View style={RNStyles.flexRow}>
-            <Image
-              source={{ uri: State.image?.path }}
-              resizeMode={'cover'}
-              style={styles.image}
-            />
-            {State.updatedImage && (
+            <View style={styles.imageContainer}>
               <Image
-                source={{ uri: State.updatedImage }}
+                source={{ uri: State.image?.path }}
                 resizeMode={'cover'}
                 style={styles.image}
               />
+            </View>
+            {State.updatedImage && (
+              <View style={styles.imageContainer}>
+                <Image
+                  source={{ uri: State.updatedImage }}
+                  resizeMode={'cover'}
+                  style={styles.image}
+                />
+              </View>
             )}
           </View>
-
           <RNButton
             title={'Start Editing'}
             style={styles.button}
@@ -95,12 +99,18 @@ const styles = StyleSheet.create({
   },
   button: {
     width: '85%',
+    marginTop: wp(4),
   },
-  image: {
+  imageContainer: {
     width: imageSize,
     height: imageSize,
     borderRadius: wp(3),
     marginHorizontal: wp(2),
+    ...RNStyles.shadow,
+  },
+  image: {
+    ...RNStyles.image100,
+    borderRadius: wp(3),
   },
 });
 
