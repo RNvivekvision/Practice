@@ -9,6 +9,8 @@ export { default as RNImage } from './RNImage';
 export { default as RNDevider } from './RNDevider';
 export { default as RNIcon } from './RNIcon';
 export { default as RNScrollView } from './RNScrollView';
+export { default as RNDropDown } from './RNDropDown';
+export { default as RNSlider } from './RNSlider';
 export { default as RNInput } from './RNInput';
 export { default as RNStyles } from './RNStyles';
 // export { default as RNGradient } from './RNGradient';

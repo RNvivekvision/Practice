@@ -1,16 +1,15 @@
-// Photo Editing using @baronha/react-native-photo-editor
-
-import React, { useEffect, useState } from 'react';
-import { Image, StyleSheet, View } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, View } from 'react-native';
 import ImageCropPicker from 'react-native-image-crop-picker';
-import PhotoEditor from '@baronha/react-native-photo-editor';
 import { RNButton, RNLoader, RNStyles } from '../../Common';
+import { Editing } from '../../Components';
+import { Images } from '../../Constants';
 import { wp } from '../../Theme';
 
 const ImageEditing = () => {
   const [State, setState] = useState({
     isLoading: false,
-    image: null,
+    image: { path: Images.DummyImage },
     updatedImage: null,
   });
 
@@ -32,60 +31,20 @@ const ImageEditing = () => {
     }
   };
 
-  const onStartEditingPress = async () => {
-    setState(p => ({ ...p, isLoading: true }));
-    const path = State.image.path.includes('file://')
-      ? State.image.path
-      : `file://${State.image.path}`;
-
-    try {
-      const updatedImage = await PhotoEditor.open({
-        path: path,
-      });
-      setState(p => ({ ...p, updatedImage }));
-      console.log('updatedImage -> ', JSON.stringify(updatedImage, null, 2));
-    } catch (e) {
-      console.log('Error onStartEditingPress -> ', e);
-    } finally {
-      setState(p => ({ ...p, isLoading: false }));
-    }
-  };
-
   return (
-    <View style={styles.container}>
+    <View style={RNStyles.container}>
       <RNLoader visible={State.isLoading} />
+
       {State.image ? (
-        <>
-          <View style={RNStyles.flexRow}>
-            <View style={styles.imageContainer}>
-              <Image
-                source={{ uri: State.image?.path }}
-                resizeMode={'cover'}
-                style={styles.image}
-              />
-            </View>
-            {State.updatedImage && (
-              <View style={styles.imageContainer}>
-                <Image
-                  source={{ uri: State.updatedImage }}
-                  resizeMode={'cover'}
-                  style={styles.image}
-                />
-              </View>
-            )}
-          </View>
-          <RNButton
-            title={'Start Editing'}
-            style={styles.button}
-            onPress={onStartEditingPress}
-          />
-        </>
+        <Editing imageUri={State.image?.path} />
       ) : (
-        <RNButton
-          title={'Pick Image'}
-          style={styles.button}
-          onPress={onPickImagePress}
-        />
+        <View style={RNStyles.flexCenter}>
+          <RNButton
+            title={'Pick Image'}
+            style={styles.button}
+            onPress={onPickImagePress}
+          />
+        </View>
       )}
     </View>
   );
@@ -93,10 +52,6 @@ const ImageEditing = () => {
 
 const imageSize = wp(40);
 const styles = StyleSheet.create({
-  container: {
-    ...RNStyles.container,
-    ...RNStyles.center,
-  },
   button: {
     width: '85%',
     marginTop: wp(4),

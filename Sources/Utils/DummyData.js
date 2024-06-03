@@ -15,6 +15,14 @@ const DummyData = {
       navigate: NavRoutes.ImageEditing,
     },
   ],
+  Filters: [
+    {
+      title: 'Rotate',
+    },
+    {
+      title: 'Scale',
+    },
+  ],
 };
 
 export default DummyData;

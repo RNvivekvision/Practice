@@ -46,8 +46,8 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.Primary,
     paddingVertical: hp(1.7),
     paddingHorizontal: wp(4),
-    marginHorizontal: wp(1),
-    marginVertical: hp(1),
+    marginHorizontal: wp(2),
+    marginVertical: hp(1.5),
     borderRadius: wp(3),
   },
   buttonText: {

@@ -13,7 +13,13 @@ const Routes = () => {
         <Stack.Screen name={NavRoutes.Home} component={Home} />
         <Stack.Screen name={NavRoutes.WebForm} component={WebForm} />
         <Stack.Screen name={NavRoutes.OpenAI} component={OpenAi} />
-        <Stack.Screen name={NavRoutes.ImageEditing} component={ImageEditing} />
+        <Stack.Screen
+          name={NavRoutes.ImageEditing}
+          component={ImageEditing}
+          options={{
+            headerShown: false,
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
