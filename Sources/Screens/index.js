@@ -1,3 +1,8 @@
-import Home from './Home';
-export { Home };
-export { WebForm, OpenAi, ImageEditing } from './Tasks';
+export { default as Home } from './Home';
+export {
+  WebForm,
+  OpenAi,
+  ImageEditing,
+  AnimatedAccordion,
+  TodoApp,
+} from './Tasks';

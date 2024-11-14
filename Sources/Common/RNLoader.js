@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
   Container: {
     ...RNStyles.center,
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: Colors.Black + '60',
+    backgroundColor: Colors.Black + '40',
     zIndex: 10000,
   },
 });
