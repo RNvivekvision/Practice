@@ -9,6 +9,7 @@ import {
   ImageEditing,
   AnimatedAccordion,
   TodoApp,
+  TodoDetail,
 } from '../Screens';
 
 const Stack = createStackNavigator();
@@ -24,7 +25,6 @@ const Routes = () => {
           name={NavRoutes.AnimatedAccrodion}
           component={AnimatedAccordion}
         />
-        <Stack.Screen name={NavRoutes.TodoApp} component={TodoApp} />
         <Stack.Screen
           name={NavRoutes.ImageEditing}
           component={ImageEditing}
@@ -32,6 +32,8 @@ const Routes = () => {
             headerShown: false,
           }}
         />
+        <Stack.Screen name={NavRoutes.TodoApp} component={TodoApp} />
+        <Stack.Screen name={NavRoutes.TodoDetail} component={TodoDetail} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -5,4 +5,5 @@ export {
   ImageEditing,
   AnimatedAccordion,
   TodoApp,
+  TodoDetail,
 } from './Tasks';

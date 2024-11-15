@@ -5,6 +5,7 @@ const NavRoutes = {
   ImageEditing: 'Image Editing',
   AnimatedAccrodion: 'Animated Accrodion',
   TodoApp: 'Todo App',
+  TodoDetail: 'Todo Detail',
 };
 
 export default NavRoutes;

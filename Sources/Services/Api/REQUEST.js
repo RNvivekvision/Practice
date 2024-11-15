@@ -29,6 +29,7 @@ const REQUEST = async ({
   //   body: JSON.stringify(Params),
   //   headers: Headers,
   // });
+  await Functions.wait(1000);
   const responseJson = await Promise.race([
     fetch(payload.url, {
       method: Method,
@@ -46,7 +47,6 @@ const REQUEST = async ({
 const Header = (NeedToken, Token, IsformData) => {
   let apiHeaders = {
     Accept: '*/*',
-    'ngrok-skip-browser-warning': 'true',
     'Content-Type': IsformData ? 'multipart/form-data' : 'application/json',
   };
   if (NeedToken) {
